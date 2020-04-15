@@ -1,19 +1,24 @@
  
 #!/usr/bin/env python
-from setuptools import setup, find_packages
+import setuptools
 
-setup(
-    name='attackerkb-api',
-    version='0.0.1',
-    author='Kevin Breen',
-    author_email='kevin@techanarchy.net',
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name="attackerkb-api",
+    version="0.0.1",
+    author="Kevin Breen",
+    author_email="kevin@techanarchy.net",
     description="AttackerKB API Library",
-    url='https://github.com/kevthehermit/attackerkb-api',
-    license='MIT',
-    zip_safe=False,
-    packages=find_packages(),
-    include_package_data=True,
-    package_data={'': ['LICENSE', 'CHANGELOG.md']},
-    package_dir={'attackerkb_api': 'attackerkb_api'},
-    install_requires=["requests >= 2.22.0"]
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/kevthehermit/attackerkb-api",
+    packages=setuptools.find_packages(),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    python_requires='>=3.6',
 )
