@@ -16,3 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0) a
 - New filters to topics
 - New filters to assesments
 - New filters to contributors
+
+## [0.0.3] - 2020-06-17
+### Changed
+- Include tools in readme
+- Add test for API Sort

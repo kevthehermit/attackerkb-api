@@ -242,5 +242,9 @@ Get Single User by Name
 
 ```
 export API_KEY=YOURAPIKEY
-pytest -v -s --cov=attackerkb_api --cov-report html --cov-report term
+pytest -v --cov=attackerkb_api --cov-report html --cov-report term
 ```
+
+## Tools using this Library
+
+- [AKB-Explorer](https://github.com/horshark/akb-explorer)
