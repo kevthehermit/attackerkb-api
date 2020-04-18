@@ -2,6 +2,13 @@
 
 This is a python wrapper around the AttackerKB RESTful API. For more details on the API referer to https://api.attackerkb.com/api-docs/docs
 
+
+## Status
+
+![Coverage](https://codecov.io/gh/kevthehermit/attackerkb-api/branche/master/graph/badge.svg "Coverage")
+
+[![Build Status](https://travis-ci.org/kevthehermit/attackerkb-api.svg?branch=master)](https://travis-ci.org/github/kevthehermit/attackerkb-api/)
+
 ## Installation
 
 `python3 -m pip install attackerkb-api`

@@ -1,3 +1,4 @@
+os: linux
 language: python
 sudo: required
 dist: bionic
@@ -9,8 +10,8 @@ python:
 - 3.7
 - 3.8
 before_install:
-- sudo apt-get update -qq
-- sudo apt-get install -yqq python3-pip
+- apt-get update -qq
+- apt-get install -yqq python3-pip
 - pip3 install pytest codecov pytest-cov
 install:
 - pip install -r requirements.txt
@@ -22,7 +23,7 @@ after_success:
 - codecov
 deploy:
   provider: pypi
-  user: __token__
+  username: __token__
   password:
     secure: Kn1hERxacUEUwD4J3SAqW1Bpc5A39i+ArE+0QVMBffxeEWe7nM26aYlYpwm4nE6/TX1mPyCCsCcljTjXuENOduoU6Hq0C3dQEdgQfgkjKSR55tM0D+Yircz5W/YMKks9h5O2fP6h0OPFqAGU3wngMLX6k1UIe5VFB+Z+/O7uTNjq1/cf8bukunb13r1M0ARRjdA47HcsIxkCCwpS7oi9WhxW0M5dg7ZTfSBzCUYaa0cumCdKlXVyBqH6yOx04iFGe8Z25ixJ2lKCOK9f9jy/sIW1fMlnM//PClN8DDVFRuIFP17elz9/Uc2MIxX72hoKq7GlI45GOG/D/setKfrZVQ7N9vnxs9P/S1r3AGcQ3yH2uofT3Z+nEIabsgEwPvbqeNffgmGTjRNK6oLqTzFJUIWwO7E+Bhv5W37DOGxGIO2EHj/uXkhohhNZj9COsevZQUWk5s+Qg8RD0tCPfjlWqcTw0WZKuTaIHdfHbA8jOvEvHviXylf7U7n1oRdrSwjTqcBhI87aCQoZrpcmF3DDuK6ozJT0qhHHYWXQXMjbvbqIghzwuie6QSD5dDJA0HQ7GP2T6Mr4dt0yEL+m0ukO3I4o3iS3UoZkziUVOghX/if6hbpT8cEWNtIPvRQEInf6eRBLR/UP1HLwwWPztLwcisk0tX0Oi5EIly2dJM1jWb8=
   on:
