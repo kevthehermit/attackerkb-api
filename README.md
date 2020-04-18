@@ -5,7 +5,7 @@ This is a python wrapper around the AttackerKB RESTful API. For more details on 
 
 ## Status
 
-![Coverage](https://codecov.io/gh/kevthehermit/attackerkb-api/branche/master/graph/badge.svg "Coverage")
+[![codecov](https://codecov.io/gh/kevthehermit/attackerkb-api/branch/master/graph/badge.svg)](https://codecov.io/gh/kevthehermit/attackerkb-api)
 
 [![Build Status](https://travis-ci.org/kevthehermit/attackerkb-api.svg?branch=master)](https://travis-ci.org/github/kevthehermit/attackerkb-api/)
 
