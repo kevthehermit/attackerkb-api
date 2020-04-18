@@ -6,7 +6,8 @@ cache:
   pip: true
 python:
 - 3.6
-- 3.6-dev
+- 3.7
+- 3.8
 before_install:
 - sudo apt-get update -qq
 - sudo apt-get install -yqq python3-pip
