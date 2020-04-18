@@ -16,7 +16,6 @@ install:
 - pip install -r requirements.txt
 - pip install -e .
 script:
-- malconf
 - pytest -v --cov=attackerkb_api
 after_success:
 - python setup.py sdist
