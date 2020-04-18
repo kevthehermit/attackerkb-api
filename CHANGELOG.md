@@ -21,3 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0) a
 ### Changed
 - Include tools in readme
 - Add test for API Sort
+
+## [0.0.4] - 2020-06-18
+### Added
+- Travis CI
