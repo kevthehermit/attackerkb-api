@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="attackerkb-api",
-    version="0.0.1",
+    version="0.0.3",
     author="Kevin Breen",
     author_email="kevin@techanarchy.net",
     description="AttackerKB API Library",
