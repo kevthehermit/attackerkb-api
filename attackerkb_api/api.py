@@ -31,7 +31,7 @@ class AttackerKB():
         :param size: An int that sets how many results per page are returned
         :param **kwargs: A set of Key=Values passed to the function to filter the search.
                          Must be in this list: 
-                         ["id", "editorId" ,"name" ,"created" ,"revisionDate" ,"disclosureDate" ,"document", "metadata", "q", "sort"]
+                         ["id", "editorId" ,"name" ,"created" , "createdAfter", "createdBefore", "revisionDate" , "revisedAfter", "revisedBefore", "disclosureDate" ,"document", "metadata", "featured", "q", "sort"]
 
 
         : return: JSON Object with a list of results.
@@ -43,7 +43,7 @@ class AttackerKB():
             "page": page,
             "size": size
         }
-        valid_keys = ["id", "editorId" ,"name" ,"created" ,"revisionDate" ,"disclosureDate" ,"document", "metadata", "q", "sort"]
+        valid_keys = ["id", "editorId" ,"name" ,"created" , "createdAfter", "createdBefore", "revisionDate" , "revisedAfter", "revisedBefore", "disclosureDate" ,"document", "metadata", "featured", "q", "sort"]
         for key, value in kwargs.items():
             if key in valid_keys:
                 params[key] = value
@@ -91,7 +91,7 @@ class AttackerKB():
             "page": page,
             "size": size
         }
-        valid_keys = ["id", "editorId" ,"topicId" ,"created" ,"revisionDate" ,"document", "score", "metadata", "q", "sort"]
+        valid_keys = ["id", "editorId" ,"topicId" ,"created" ,"createdAfter", "createdBefore", "revisionDate" ,"revisedAfter", "revisedBefore", "document", "score", "metadata", "q", "sort"]
         for key, value in kwargs.items():
             if key in valid_keys:
                 params[key] = value
@@ -137,7 +137,7 @@ class AttackerKB():
             "page": page,
             "size": size
         }
-        valid_keys = ["id", "username" ,"avatar" ,"created", "score", "q", "sort"]
+        valid_keys = ["id", "username" ,"avatar" ,"created", "createdAfter", "createdBefore", "score", "q", "sort"]
         for key, value in kwargs.items():
             if key in valid_keys:
                 params[key] = value
