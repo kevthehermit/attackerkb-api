@@ -128,3 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 local.py
+akb_bot.py
