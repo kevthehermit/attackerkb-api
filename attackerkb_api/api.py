@@ -16,7 +16,8 @@ class AttackerKB():
 
     def __init__(self, api_key):
         self.api_key = api_key
-        self.api_base_url = "https://api.attackerkb.com"
+        self.api_base_url = "https://api.attackerkb.com/v1/"
+        self.api_version = "v1"
         self.version = "0.0.6"
         self.headers = {
             'Authorization': 'basic ' + api_key,
