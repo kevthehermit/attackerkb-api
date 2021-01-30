@@ -33,8 +33,8 @@ class AttackerKB():
         :param page: An int that set the start page to search from
         :param size: An int that sets how many results per page are returned
         :param **kwargs: A set of Key=Values passed to the function to filter the search.
-                         Must be in this list: 
-                         ["id", "editorId" ,"name" ,"created" , "createdAfter", "createdBefore", "revisionDate" , "revisedAfter", "revisedBefore", "disclosureDate" ,"document", "metadata", "featured", "q", "sort"]
+                         Must be in this list:
+                         ["id", "editorId" ,"name" ,"created" , "createdAfter", "createdBefore", "revisionDate" , "revisedAfter", "revisedBefore", "disclosureDate" ,"document", "metadata", "featured", "q", "sort", "expand"]
 
 
         : return: JSON Object with a list of results.
@@ -46,7 +46,7 @@ class AttackerKB():
             "page": page,
             "size": size
         }
-        valid_keys = ["id", "editorId" ,"name" ,"created" , "createdAfter", "createdBefore", "revisionDate" , "revisedAfter", "revisedBefore", "disclosureDate" ,"document", "metadata", "featured", "q", "sort"]
+        valid_keys = ["id", "editorId" ,"name" ,"created" , "createdAfter", "createdBefore", "revisionDate" , "revisedAfter", "revisedBefore", "disclosureDate" ,"document", "metadata", "featured", "q", "sort", "expand"]
         for key, value in kwargs.items():
             if key in valid_keys:
                 params[key] = value
