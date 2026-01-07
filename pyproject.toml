@@ -1,6 +1,6 @@
 [project]
 name = "attackerkb-api"
-version = "0.0.7"
+version = "0.0.8"
 description = "AttackerKB API Library"
 readme = "README.md"
 license = "MIT"

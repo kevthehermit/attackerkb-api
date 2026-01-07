@@ -3,6 +3,23 @@ All notable changes to the attackerkb-api will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.8] - 2026-01-07
+### Added
+- Type hints throughout the codebase
+- Environment variable support for API key (ATTACKERKB_API_KEY)
+- Rapid7 analysis filter parameters for topics endpoint
+- `expand` parameter for assessments endpoint
+
+### Changed
+- Migrated from Travis CI to GitHub Actions
+- Migrated from setup.py to pyproject.toml with hatchling
+- Migrated to uv for package management
+- Updated minimum Python version to 3.10
+- Added ruff for linting and formatting
+
+### Fixed
+- Fixed bug in headers using local variable instead of instance attribute
+
 ## [0.0.7] - 2020-10-23
 ### Added
 - Update Base URL to use API versioning
