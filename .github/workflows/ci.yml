@@ -47,13 +47,6 @@ jobs:
       - name: Run tests
         run: uv run pytest -v --cov=attackerkb_api
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        if: matrix.python-version == '3.12'
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: false
-
   publish:
     needs: [lint, test]
     runs-on: ubuntu-latest
