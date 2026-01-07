@@ -25,12 +25,15 @@ Homepage = "https://github.com/kevthehermit/attackerkb-api"
 Repository = "https://github.com/kevthehermit/attackerkb-api"
 
 [project.optional-dependencies]
+mcp = [
+    "fastmcp>=0.1.0",
+]
+
+[dependency-groups]
 dev = [
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",
-]
-mcp = [
-    "fastmcp>=0.1.0",
+    "ruff>=0.8.0",
 ]
 
 [build-system]
@@ -45,3 +48,23 @@ testpaths = ["tests"]
 
 [tool.coverage.run]
 source = ["attackerkb_api"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # Pyflakes
+    "I",      # isort
+    "B",      # flake8-bugbear
+    "UP",     # pyupgrade
+]
+ignore = [
+    "E501",   # line too long (handled by formatter)
+]
+
+[tool.ruff.format]
+quote-style = "double"
