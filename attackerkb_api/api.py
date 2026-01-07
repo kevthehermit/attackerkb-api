@@ -3,23 +3,24 @@
 # -*- coding: utf-8 -*-
 
 
-import json
+import os
+from typing import Any
 from uuid import UUID
-try:
-    import requests
-except ImportError:
-    print("Error importing requests.")
+
+import requests
 
 
+ATTACKERKB_API_KEY = "ATTACKERKB_API_KEY"
 
-class AttackerKB():
 
-    def __init__(self, api_key):
-        self.api_key = api_key
-        self.api_base_url = "https://api.attackerkb.com/v1/"
-        self.api_version = "v1"
-        self.version = "0.0.6"
-        self.headers = {
+class AttackerKB:
+
+    def __init__(self, api_key: str | None = None) -> None:
+        self.api_key: str = api_key or os.environ.get(ATTACKERKB_API_KEY, "")
+        self.api_base_url: str = "https://api.attackerkb.com/v1/"
+        self.api_version: str = "v1"
+        self.version: str = "0.0.6"
+        self.headers: dict[str, str] = {
             'Authorization': 'basic ' + api_key,
             'User-Agent': 'AttackerKB-API ' + self.version,
         }
@@ -27,14 +28,14 @@ class AttackerKB():
         if not self.api_key:
             raise ApiError("You need to provide an attackerkb API key")
 
-    def get_topics(self, page=0, size=10, **kwargs):
+    def get_topics(self, page: int = 0, size: int = 10, **kwargs: Any) -> list[dict[str, Any]]:
         """ Get a list of topics that match the kwargs
 
         :param page: An int that set the start page to search from
         :param size: An int that sets how many results per page are returned
         :param **kwargs: A set of Key=Values passed to the function to filter the search.
                          Must be in this list:
-                         ["id", "editorId" ,"name" ,"created" , "createdAfter", "createdBefore", "revisionDate" , "revisedAfter", "revisedBefore", "disclosureDate" ,"document", "metadata", "featured", "q", "sort", "expand"]
+                         ["id", "editorId", "name", "created", "createdAfter", "createdBefore", "revisionDate", "revisedAfter", "revisedBefore", "disclosureDate", "document", "metadata", "featured", "rapid7AnalysisCreated", "rapid7AnalysisCreatedAfter", "rapid7AnalysisCreatedBefore", "rapid7AnalysisRevisionDate", "rapid7AnalysisRevisedAfter", "rapid7AnalysisRevisedBefore", "q", "sort", "expand"]
 
 
         : return: JSON Object with a list of results.
@@ -46,7 +47,7 @@ class AttackerKB():
             "page": page,
             "size": size
         }
-        valid_keys = ["id", "editorId" ,"name" ,"created" , "createdAfter", "createdBefore", "revisionDate" , "revisedAfter", "revisedBefore", "disclosureDate" ,"document", "metadata", "featured", "q", "sort", "expand"]
+        valid_keys = ["id", "editorId", "name", "created", "createdAfter", "createdBefore", "revisionDate", "revisedAfter", "revisedBefore", "disclosureDate", "document", "metadata", "featured", "rapid7AnalysisCreated", "rapid7AnalysisCreatedAfter", "rapid7AnalysisCreatedBefore", "rapid7AnalysisRevisionDate", "rapid7AnalysisRevisedAfter", "rapid7AnalysisRevisedBefore", "q", "sort", "expand"]
         for key, value in kwargs.items():
             if key in valid_keys:
                 params[key] = value
@@ -60,7 +61,7 @@ class AttackerKB():
         return result
 
 
-    def get_single_topic(self, topic_id=None):
+    def get_single_topic(self, topic_id: str | None = None) -> dict[str, Any]:
         """ Get a Single topic by its ID
 
         :param topic_id: A Valid UUID for a topic you want to retrieve
@@ -75,14 +76,14 @@ class AttackerKB():
         result = parse_response(api_response)
         return result
 
-    def get_assessments(self, page=0, size=10, **kwargs):
+    def get_assessments(self, page: int = 0, size: int = 10, **kwargs: Any) -> list[dict[str, Any]]:
         """ Get a list of assessments that match the kwargs
 
         :param page: An int that set the start page to search from
         :param size: An int that sets how many results per page are returned
         :param **kwargs: A set of Key=Values passed to the function to filter the search.
-                         Must be in this list: 
-                         ["id", "editorId" ,"topicId" ,"created" ,"revisionDate" ,"document", "score", "metadata", "q", "sort"] 
+                         Must be in this list:
+                         ["id", "editorId", "topicId", "created", "createdAfter", "createdBefore", "revisionDate", "revisedAfter", "revisedBefore", "document", "score", "metadata", "q", "sort", "expand"]
 
 
         : return: JSON Object with a list of results.
@@ -94,7 +95,7 @@ class AttackerKB():
             "page": page,
             "size": size
         }
-        valid_keys = ["id", "editorId" ,"topicId" ,"created" ,"createdAfter", "createdBefore", "revisionDate" ,"revisedAfter", "revisedBefore", "document", "score", "metadata", "q", "sort"]
+        valid_keys = ["id", "editorId", "topicId", "created", "createdAfter", "createdBefore", "revisionDate", "revisedAfter", "revisedBefore", "document", "score", "metadata", "q", "sort", "expand"]
         for key, value in kwargs.items():
             if key in valid_keys:
                 params[key] = value
@@ -107,7 +108,7 @@ class AttackerKB():
         result = parse_response(api_response)
         return result
 
-    def get_single_assessment(self, assessment_id):
+    def get_single_assessment(self, assessment_id: str) -> dict[str, Any]:
         """ Get a Single assesment by its ID
 
         :param assessment_id: A Valid UUID for a topic you want to retrieve
@@ -122,13 +123,14 @@ class AttackerKB():
         result = parse_response(api_response)
         return result
 
-    def get_contributors(self, page=0, size=10, **kwargs):
+    def get_contributors(self, page: int = 0, size: int = 10, **kwargs: Any) -> list[dict[str, Any]]:
         """ Get a list of contributors that match the kwargs
 
         :param page: An int that set the start page to search from
         :param size: An int that sets how many results per page are returned
         :param **kwargs: A set of Key=Values passed to the function to filter the search.
-                         Must be in this list: ["id", "username" ,"avatar" ,"created", "score", "q", "sort"] 
+                         Must be in this list:
+                         ["id", "username", "avatar", "created", "createdAfter", "createdBefore", "score", "q", "sort"] 
 
 
         : return: JSON Object with a list of results.
@@ -154,7 +156,7 @@ class AttackerKB():
         result = parse_response(api_response)
         return result
 
-    def get_single_contributor(self, contributor_id):
+    def get_single_contributor(self, contributor_id: str) -> dict[str, Any]:
         """ Get a Single assesment by its ID or Username
 
         :param assessment_id: A Valid UUID for a topic you want to retrieve or a username string
@@ -185,7 +187,7 @@ class ApiError(Exception):
     pass
 
 
-def valid_uuid(uuid_string):
+def valid_uuid(uuid_string: str) -> bool:
     """
     return true if valid uuid4
 
@@ -194,17 +196,20 @@ def valid_uuid(uuid_string):
     : return bool: Based on the result
     """
     try:
-        val = UUID(uuid_string, version=4)
+        UUID(uuid_string, version=4)
         return True
     except ValueError:
         return False
 
-def parse_response(api_response):
+
+def parse_response(api_response: requests.Response) -> list[dict[str, Any]] | dict[str, Any]:
     if api_response.status_code == 200:
         return api_response.json()['data']
     elif api_response.status_code == 401:
         raise ApiError("Error Authenticating to the API check your key")
-    elif api_response == 404:
+    elif api_response.status_code == 404:
         raise ApiError("You requested an invalid resource")
     elif api_response.status_code == 500:
         raise ApiError("There was an error with the API Server")
+    else:
+        raise ApiError(f"Unexpected status code: {api_response.status_code}")
