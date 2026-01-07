@@ -16,7 +16,7 @@ class AttackerKB:
         self.api_key: str = api_key or os.environ.get(ATTACKERKB_API_KEY, "")
         self.api_base_url: str = "https://api.attackerkb.com/v1/"
         self.api_version: str = "v1"
-        self.version: str = "0.0.7"
+        self.version: str = "0.0.8"
         self.headers: dict[str, str] = {
             "Authorization": "basic " + self.api_key,
             "User-Agent": "AttackerKB-API " + self.version,
