@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 local.py
 akb_bot.py
+.gemini/settings.json
