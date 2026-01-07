@@ -2,6 +2,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import annotations
 
 import os
 from typing import Any
@@ -19,9 +20,9 @@ class AttackerKB:
         self.api_key: str = api_key or os.environ.get(ATTACKERKB_API_KEY, "")
         self.api_base_url: str = "https://api.attackerkb.com/v1/"
         self.api_version: str = "v1"
-        self.version: str = "0.0.6"
+        self.version: str = "0.0.7"
         self.headers: dict[str, str] = {
-            'Authorization': 'basic ' + api_key,
+            'Authorization': 'basic ' + self.api_key,
             'User-Agent': 'AttackerKB-API ' + self.version,
         }
 
